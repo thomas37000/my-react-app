@@ -1,9 +1,9 @@
-name: Switch Node version
+name: interact with Github API
 on: 
   pull_request:
 
 jobs:
-  run-npm-test:
+  create-issue:
     runs-on: ubuntu-latest
     steps:
         - name: checkout
@@ -21,5 +21,6 @@ jobs:
         - name: run test
           shell: bash
           run: |
+            node -v
             npm install
             npm test
