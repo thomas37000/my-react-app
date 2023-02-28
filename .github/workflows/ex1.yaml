@@ -8,13 +8,16 @@ jobs:
     steps:
         - name: checkout
           uses: actions/checkout@v3
-        - name : setup node
-          uses: actions/setup-node@v3
+
+        - name: Use the value
           run: |
             echo "NODE_VERSION=14" >> $GITHUB_ENV
-        - name: Use the value
+
+        - name : setup node
+          uses: actions/setup-node@v3
           with:
             node-version: ${{ env.NODE_VERSION }}
+
         - name: run test
           shell: bash
           run: |
