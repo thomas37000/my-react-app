@@ -1,6 +1,6 @@
-name: npm test one job
-on:
-  workflow_dispatch:
+name: Switch Node version
+on: 
+  pull_request:
 
 jobs:
   run-npm-test:
