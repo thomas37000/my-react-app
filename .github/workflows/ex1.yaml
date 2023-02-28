@@ -4,7 +4,6 @@ on:
 
 jobs:
   run-npm-test:
-    needs: run-npm-install
     runs-on: ubuntu-latest
     steps:
       - name: checkout
