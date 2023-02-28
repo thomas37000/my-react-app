@@ -1,6 +1,6 @@
 name: npm test
 on: 
-  workflow_dispatch:
+  workflow_dispatch:                  # déclencheur à la main
                
 jobs:
   job1:
@@ -11,4 +11,7 @@ jobs:
         uses: actions/setup-node@v3 
         with:
           node-version: 'lts/*'        # long term support
-    
+      - run: npm ci                    # un tiré "-" correspon à une step
+      - run: npm test
+      job2:
+        needs: job1    
