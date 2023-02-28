@@ -10,8 +10,5 @@ jobs:
       - name: Install Node.js  
         uses: actions/setup-node@v3 
         with:
-          node-version: '14'        
-      - name: Install bats
-        run: npm install -g bats  
-      - name: Run bats
-        run: bats -v
+          node-version: 'lts/*'        # long term support
+    
