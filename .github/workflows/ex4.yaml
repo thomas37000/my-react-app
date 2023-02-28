@@ -3,12 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker-images:
-    uses: thomas37000/reusable workflow/.github/workflows/buildAndPublishDockerImage.yml@main
+  docker-images: #github URL
+    # uses: ./github/workflows/reusable.yml/local
+    uses: thomas37000/my-react-app/.github/workflows/reusable.yml@main
     with:
-      image_name: my-react-app
-      tag: ${{ github.sha }}
-    secrets:
-      registry_username: ${{secrets.REGISTRY_USERNAME}}
-      registry_password: ${{secrets.REGISTRY_PASSWORD}}
-      
+      node-version: 14

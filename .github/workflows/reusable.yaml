@@ -2,17 +2,14 @@ name: Create and Publish Docker Image
 
 on:
   workflow_call:
-    inputs:
-      image_name:
-        required: true
+    # dans inputs :
+    # on peut créer 20 paramètres 
+    # Max 20 reusable workflows in a caller
+    inputs: 
+      node-version:
+        required: false
+        default: 'lts/*'
         type: string
-      tag: 
-        type: string
-    secrets:
-      registry_username:
-        required: true
-      registry_password:
-        required: true
 
 jobs:
   build:
@@ -24,7 +21,7 @@ jobs:
         - name : setup node
           uses: actions/setup-node@v3
           with:
-            node-version: 'lts/*'
+            node-version: ${{inputs.node-version}}
         - name: run test
           shell: bash
           run: |
