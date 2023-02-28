@@ -1,19 +1,19 @@
-name: npm test two job
-on: 
-  workflow_dispatch:                  # déclencheur à la main
+name: npm test one job
+on:
+  workflow_dispatch:
 
 jobs:
   run-npm-test:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name : setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'       # long term support
-      - name: run test                # un tiré "-" correspond à une step
-        shell: bash
-        run: |
-          npm test
-          mpm install
+        - name: checkout
+          uses: actions/checkout@v3
+        - name : setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version: 'lts/*'
+        - name: run test
+          shell: bash
+          run: |
+            npm install
+            npm test
