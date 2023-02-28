@@ -1,0 +1,14 @@
+name: reusable workflow
+on: 
+  workflow_dispatch:
+
+jobs:
+  docker-images:
+    uses: thomas37000/reusable workflow/.github/workflows/buildAndPublishDockerImage.yml@main
+    with:
+      image_name: my-react-app
+      tag: ${{ github.sha }}
+    secrets:
+      registry_username: ${{secrets.REGISTRY_USERNAME}}
+      registry_password: ${{secrets.REGISTRY_PASSWORD}}
+      

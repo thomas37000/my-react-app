@@ -1,0 +1,33 @@
+name: Create and Publish Docker Image
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      tag: 
+        type: string
+    secrets:
+      registry_username:
+        required: true
+      registry_password:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: checkout
+          uses: actions/checkout@v3
+        - name : setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version: 'lts/*'
+        - name: run test
+          shell: bash
+          run: |
+            node -v
+            npm install
+            npm test
