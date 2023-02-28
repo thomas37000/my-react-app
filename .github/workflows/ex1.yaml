@@ -3,20 +3,6 @@ on:
   workflow_dispatch:                  # déclencheur à la main
 
 jobs:
-  run-npm-install:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name : setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'       # long term support
-      - name: run test                # un tiré "-" correspond à une step  
-        shell: bash
-        run: |
-          npm install
-
   run-npm-test:
     needs: run-npm-install
     runs-on: ubuntu-latest
@@ -26,8 +12,9 @@ jobs:
       - name : setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
-      - name: run test
+          node-version: 'lts/*'       # long term support
+      - name: run test                # un tiré "-" correspond à une step
         shell: bash
         run: |
           npm test
+          mpm install
