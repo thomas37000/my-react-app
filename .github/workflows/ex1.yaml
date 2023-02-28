@@ -1,7 +1,6 @@
 name: npm test
 on: 
   workflow_dispatch:                  # déclencheur à la main
-
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -13,6 +12,7 @@ jobs:
           node-version: 'lts/*'        # long term support
       - run: npm install               # un tiré "-" correspond à une step
   job2:
+    runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
       - name: Install Node.js  
