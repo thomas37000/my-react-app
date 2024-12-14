@@ -1,19 +1,26 @@
-name: Switch Node version
+name: interact with Github API
 on: 
   pull_request:
 
 jobs:
-  run-npm-test:
+  create-issue:
     runs-on: ubuntu-latest
     steps:
         - name: checkout
           uses: actions/checkout@v3
+
+        - name: Use the value
+          run: |
+            echo "NODE_VERSION=14" >> $GITHUB_ENV
+
         - name : setup node
           uses: actions/setup-node@v3
           with:
-            node-version: 'lts/*'
+            node-version: ${{ env.NODE_VERSION }}
+
         - name: run test
           shell: bash
           run: |
+            node -v
             npm install
             npm test
